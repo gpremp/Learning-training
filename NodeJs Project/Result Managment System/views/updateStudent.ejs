@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<title>Update student Details</title>
+</head>
+<body>
+	<input type="hidden" id="status" value=<%=status%>>
+	<nav id="navbar" class="navbar">
+		<h4>Result Management System</h4>
+		<div class="float-right">
+              <table>
+                 <tr>
+                   <th><h5 class="nav-item">Welcome <%=user%></h5></th>
+                   <th><a href="/logout"><button type="submit" class="btn btn-success active">Log out</button></a></th>
+                 </tr>
+              </table>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="myCard">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card text-center">
+						<h5 class="card-header">Update Student Details</h5>
+						<div class="card-body">
+							<form action="/teacher/student/update" onsubmit="return validate()" method="post">
+                                <input type="hidden" name="id" value=<%=student.id%>>
+								<table class="table">
+									<thead>
+										<tr class="tre">
+											<th>Roll No</th>
+											<th><input placeholder="Roll No" type="number"
+												name="rollNo" value=<%=student.rollNo%> readonly>
+												</th>
+										</tr>
+										<tr>
+											<th>Name</th>
+											<th><input placeholder="Name" type="text"
+												name="name" id="name" value=<%=student.name%> required>
+												<h6 id="nameError" class="formerror"> </h6>
+												</th>
+										</tr>
+										<tr>
+											<th>Date of Birth</th>
+											<th><input type="date"
+												name="dateOfBirth" value=<%=student.dateOfBirth%> required>
+												</th>
+										</tr>
+										<tr>
+											<th>Srore</th>
+											<th><input placeholder="score" type="number"
+												name="score" id="score" value=<%=student.score%> required>
+												<h6 id="scoreError" class="formerror"> </h6>
+												</th>
+										</tr>
+
+									</thead>
+								</table>
+								<input type="submit" class="btn btn-success active addBtn"
+									value="Submit"> <a href="/teacher/dashboard"
+									class="btn btn-danger active" role="button" aria-pressed="true">Back</a>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<nav id="footer" class="fixed-bottom">
+			<h5 class="text-center">Copyright 2022-2023 by Fresher Training</h5>
+		</nav>
+	</footer>
+</body>
+<script>
+	
+/**
+  Funtion to show error if user provide wrong input
+ */
+ function setError(id, error){
+    element = document.getElementById(id);
+    element.innerHTML = error;
+}
+
+/**
+  Fuction to clear error if user provide correct input.
+ */
+function clearErrors(){
+    errors = document.getElementsByClassName("formerror");
+    for(let item of errors){
+        item.innerHTML = "";
+    }
+}
+
+/**
+  Fuction to validate user input data.
+ */
+function validate(){
+    var formValidate = true;
+    clearErrors();
+    const name = document.getElementById("name").value;
+    const score = document.getElementById("score").value;
+    const letterCheck = /^[a-zA-Z]+$/;
+    const nameArray = name.split(" ");
+
+    nameArray.forEach(function (item){
+        if(!item){
+            setError("nameError","*name can not be empty or null");
+            formValidate = false
+        }
+        else if(!(letterCheck.test(item))){
+            setError("nameError","*Number not allowed");
+            formValidate = false
+        }
+    })
+    if(score<=0){
+        setError("scoreError","*score can not be nagative");
+        formValidate = false
+    }
+   
+    return formValidate    
+}
+window.addEventListener('load',function(){
+	let status = document.getElementById("status").value;
+	if(status=="success"){
+		swal("Success!", "Student details updated succesfully!", "success");
+	}
+	if(status=="failed"){
+		swal("RollNo already exits!", "Try Again!", "error");
+	}
+});
+</script>
+<style>
+.container {
+  position: absolute;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.myCard {
+  position: relative;
+  height: 100%;
+  width:80%;
+  border-radius: 50px;
+  -webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+}
+#navbar{
+	background-color: #cf51f5;
+	-webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+}
+#footer{
+	background-color: #cf51f5;
+	-webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+}
+th{
+	padding: 4px;
+}
+table.table{
+ margin-left: auto;
+  margin-right: auto;
+}
+.addBtn{
+	background-color: #cf51f5 !important;
+	float: left;
+	margin: 5px;
+	margin-left: 80px;
+}
+.btn-danger{
+	float: left;
+	margin: 5px;
+	margin-left: 15px;
+}
+input,select{
+	border: 2px solid black;
+  border-radius: 6px;
+  text-align: center; 
+}
+.formerror{
+	font-size: 12px;
+	color: red;
+}
+</style>
+</html>

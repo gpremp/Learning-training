@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="../assets/css/teacher_dashboard.css" />
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+	<script type="text/javascript" src="../assets/javascript/teacher_dasboard.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<title>Library</title>
+</head>
+
+<body>
+	<img src="assets/image/StudentResultImage.jpg" id="bg" width="100%" height="100%">
+	<nav id="navbar" class="navbar">
+		<h4>Result Management System</h4>
+		<div class="float-right">
+			<table>
+				<tr>
+					<th>
+						<h5 class="nav-item">Welcome <%=user%></h5>
+					</th>
+					<th><a href="/logout"><button type="submit" class="btn btn-success active">Log out</button></a>
+					</th>
+				</tr>
+			</table>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="myCard">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card text-center">
+						<table>
+							<tr>
+								<th>
+									<h5 class="card-header">Student List</h5>
+								</th>
+								<th><a href="/teacher/student" class="btn btn-success active addBtn"
+										role="button" aria-pressed="true">Add Record</a></th>
+							</tr>
+						</table>
+						<div class="card-body">
+							<table class="table">
+								<thead>
+									<tr class="tableHead">
+										<th class="bookRow">Roll No</th>
+										<th class="bookRow">Name</th>
+										<th class="bookRow">Date of Birth</th>
+										<th class="bookRow">Score</th>
+										<th class="bookRow">Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+                                    <% students.forEach(function(student) { %>
+									<tr>
+										<th class="bookRow"><%= student.rollNo %></th>
+										<th class="bookRow"><%= student.name %></th>
+										<th class="bookRow"><%= student.dateOfBirth %></th>
+										<th class="bookRow"><%= student.score %></th>
+										<th class="bookRow">
+											<button type="button" class="btn btn-success active addBtn" value="<%= student.id %>" onclick="editStudent(this.value)">Edit</button>
+												<button type="button" class="btn btn-danger active" value="<%= student.id %>" onclick="deleteStudent(this.value)">Delete</button>
+										</th>
+
+									</tr>
+                                    <% }); %> 
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<nav id="footer" class="fixed-bottom">
+			<h5 class="text-center">Copyright 2022-2023 by Fresher Training</h5>
+		</nav>
+	</footer>
+</body>
+
+</html>

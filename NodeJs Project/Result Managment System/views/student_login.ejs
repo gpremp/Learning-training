@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="../assets/css/student_login.css" />
+<title>SignIn</title>
+</head>
+<body>
+	<nav id="navbar" class="navbar">
+		<h4>Result Management System</h4>
+		<div class="float-right">
+			<table>
+				<tr>
+					<th>
+						<h5 class="nav-item">Welcome</h5>
+					</th>
+					<th><a href="/"><button type="button" class="btn btn-success active">Home</button></a></th>
+				</tr>
+			</table>
+		</div>
+	</nav>
+<div class="container">
+		<div class="myCard">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="myLeftCtn">
+						<form class="myForm text-center" action="/student/result" method="post">
+							<header>Find Your Result</header>
+
+							<div class="form-group">
+								<i class="fas fa-envelope"></i> <input class="myInput"
+									placeholder="Roll No" type="number" name="rollNo"
+									 required>
+							</div>
+
+							<div class="form-group">
+								<i class="fas fa-lock"></i> <input class="myInput"
+									type="date" name="dateOfBirth"
+									placeholder="Date of Birth" required>
+							</div>
+							<div>
+							
+								<%if(status=='failed'){
+									%><h6 class="error" style="color: red">invalid Roll No and Date of Birth</h6><%
+								}%>
+                            
+							</div>
+
+							<input type="submit" class="butt" value="Find">
+						</form>
+
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="myRightCtn">
+						<div class="box">
+							<header>Welcome Student!</header>
+							<img src="../assets/image/StudentResultImage.jpg" width="300" height="200">
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<nav id="footer" class="fixed-bottom">
+			<h5 class="text-center">Copyright 2022-2023 by Fresher Training</h5>
+		</nav>
+	</footer>
+</body>
+</html>

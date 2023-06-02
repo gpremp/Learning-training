@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+<link rel="stylesheet" href="../assets/css/teacher_login.css" />
+<script type="text/javascript" src="../assets/javascript/teacher_signup.js"></script>
+<title>SignIn</title>
+</head>
+<body>
+	<nav id="navbar" class="navbar">
+		<h4>Result Management System</h4>
+		<div class="float-right">
+			<table>
+				<tr>
+					<th>
+						<h5 class="nav-item">Welcome User</h5>
+					</th>
+					<th><a href="/"><button type="button" class="btn btn-success active">Home</button></a></th>
+					<th><a href="/teacher/signup"><button type="button" class="btn btn-success active">SignUp</button></a></th>
+					<th><a href="/teacher/login"><button type="button" class="btn btn-success active">SignIn</button></a></th>
+				</tr>
+			</table>
+		</div>
+	</nav>
+<div class="container">
+		<div class="myCard">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="myLeftCtn">
+						<form class="myForm text-center" action="/teacher/login" method="post">
+							<header>SignIn to your Account</header>
+
+							<div class="form-group">
+								<i class="fas fa-envelope"></i> <input class="myInput"
+									placeholder="Email" type="email" id="email" name="email"
+									 required>
+							</div>
+
+							<div class="form-group">
+								<i class="fas fa-lock"></i> <input class="myInput"
+									type="password" id="password" name="password"
+									placeholder="Password" required>
+							</div>
+							<div>
+								
+							<%if(status=='failed'){
+								%><h6 class="error" style="color: red">invalid Email id and Password</h6><%
+							}%>
+                            
+                            
+							</div>
+
+							<input type="submit" class="butt" value="Sign In">
+							<div class="form-group">
+							<br>
+							<p>Don't have an Account <a id="signup" href="/teacher/signup">SignUp!</a></p>
+								
+							</div>
+
+						</form>
+
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="myRightCtn">
+						<div class="box">
+							<header>Welcome Teacher!</header>
+							<img src="/assets/image/StudentResultImage.jpg" width="300" height="200">
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<nav id="footer" class="fixed-bottom">
+			<h5 class="text-center">Copyright 2022-2023 by Fresher Training</h5>
+		</nav>
+	</footer>
+</body>
+</html>
