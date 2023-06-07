@@ -34,6 +34,11 @@ public clearErrors(){
       item.innerHTML = "";
   }
 }
+public isSentenceValid(sentence: string): boolean {
+  const words = sentence.split(' ');
+
+  return words.some((word) => /\d/.test(word));
+}
 
 /**
  * Function to create new user account
@@ -42,10 +47,11 @@ public clearErrors(){
     this.clearErrors();
     const emailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     const letterCheck = /^[a-zA-Z]+$/;
-    if(!(letterCheck.test(this.user.name))){
-      this.setError("name","*Number not allowed");
-      return
-  }
+
+    if(this.isSentenceValid(this.user.name)){
+        this.setError("name","*Number not allowed");
+        return;
+    }
   if(!this.user.email.match(emailformat)){
       this.setError("email","*Email is not valid");
       return

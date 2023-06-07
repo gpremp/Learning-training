@@ -23,9 +23,10 @@ public class ProductServices {
 	/**
 	 * Method to save new product into the database 
 	 * @param product Represents the object of product 
+	 * @return 
 	 */
-	public void saveProduct(final Product product) {
-		this.productReprository.save(product);
+	public Product saveProduct(final Product product) {
+		return this.productReprository.save(product);
 	}
 	
 	/**

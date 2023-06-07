@@ -11,6 +11,7 @@ import { AskForReviewComponent } from './userDashboard/ask-for-review/ask-for-re
 import { ProductComponent } from './userDashboard/product/product.component';
 import { ProductsComponent } from './userDashboard/products/products.component';
 import { UserDashboardComponent } from './userDashboard/user-dashboard/user-dashboard.component';
+import { AddProductComponent } from './Admin/add-product/add-product.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,12 @@ const routes: Routes = [
   {
     path:'adminDashboard/product/:id',
     component:AdminProductDashboardComponent,
+    pathMatch:'full',
+    canActivate: [UserGuardGuard],
+  },
+  {
+    path:'adminDashboard/product',
+    component:AddProductComponent,
     pathMatch:'full',
     canActivate: [UserGuardGuard],
   },

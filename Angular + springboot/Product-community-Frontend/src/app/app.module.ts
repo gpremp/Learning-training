@@ -15,6 +15,7 @@ import { AskForReviewComponent } from './userDashboard/ask-for-review/ask-for-re
 import { AdminDashboardComponent } from './Admin/admin-dashboard/admin-dashboard.component';
 import { AdminSigninComponent } from './Admin/admin-signin/admin-signin.component';
 import { AdminProductDashboardComponent } from './Admin/admin-product-dashboard/admin-product-dashboard.component';
+import { AddProductComponent } from './Admin/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AdminProductDashboardComponent } from './Admin/admin-product-dashboard/
     AskForReviewComponent,
     AdminDashboardComponent,
     AdminSigninComponent,
-    AdminProductDashboardComponent
+    AdminProductDashboardComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

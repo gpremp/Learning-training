@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Review } from '../entities/Review';
+import { Product } from '../entities/Product';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,10 @@ import { Review } from '../entities/Review';
 export class ProductApiService {
 
   constructor(private http:HttpClient) { }
+
+  public addProduct(productData:Product){
+    return this.http.post('http://localhost:8080/product',productData);
+  }
 
   /**
    * HTTP request function to get a list of products by product code product name and product brand

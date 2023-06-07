@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.product_community.doaservices.ProductServices;
 import com.product_community.doaservices.ReviewServices;
+import com.product_community.entities.User;
 import com.product_community.entities.product.Product;
 import com.product_community.entities.product.ProductReview;
 
@@ -32,6 +33,20 @@ public class ProductController {
 	
 	@Autowired
 	private ReviewServices reviewServices;
+	
+	/**
+	 * Post HTTP request to save a new user into the database 
+	 * @param user Represents the object of user 
+	 * @return returns the object of closure 
+	 */
+	@PostMapping("/product")
+	public Product addProduct(@RequestBody final Product product) {
+		final Product newProduct = this.productServices.getProduct(product.getProductCode());
+		if(newProduct==null) {
+			return this.productServices.saveProduct(product);
+		}
+		return null;
+	}
 	
 	/**
 	 * Get HTTP request to get the product details by its ID 
