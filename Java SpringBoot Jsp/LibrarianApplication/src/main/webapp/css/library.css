@@ -1,0 +1,78 @@
+@charset "ISO-8859-1";
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body {
+  background: #fbf3ff;
+} 
+.container {
+  position: absolute;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.myLeftCtn {
+  position: relative;
+  background: #fff;
+  border-radius: 25px;
+  height: 100%;
+  padding: 25px;
+  padding-left: 50px;
+  align-content: flex-end;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+  outline: none;
+  left: 36px;
+  color: #fff;
+  width: 230px;
+  border: none;
+}
+.myCard {
+  position: relative;
+  background:  #fff;
+  height: 100%;
+  width:80%;
+  border-radius: 25px;
+  -webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+}
+#navbar{
+	background-color: #cf51f5;
+	-webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+}
+#footer{
+	background-color: #cf51f5;
+	-webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+}
+th{
+	padding: 4px;
+}
+table.table, th.bookRow, td.tableHead {
+    border:1px solid black;
+    border-collapse: collapse;
+  }
+table.table{
+ margin-left: auto;
+  margin-right: auto;
+}
+.card-header{
+	margin-left: 10em;
+}
+.addBtn{
+	background-color: #cf51f5 !important;
+}
+
+

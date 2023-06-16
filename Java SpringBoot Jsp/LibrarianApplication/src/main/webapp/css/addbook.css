@@ -1,0 +1,69 @@
+@charset "ISO-8859-1";
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body {
+  background: #fbf3ff;
+} 
+.container {
+  position: absolute;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.myCard {
+  position: relative;
+  height: 100%;
+  width:80%;
+  border-radius: 50px;
+  -webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+}
+#navbar{
+	background-color: #cf51f5;
+	-webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+}
+#footer{
+	background-color: #cf51f5;
+	-webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+}
+th{
+	padding: 4px;
+}
+table.table{
+ margin-left: auto;
+  margin-right: auto;
+}
+.addBtn{
+	background-color: #cf51f5 !important;
+	float: left;
+	margin: 5px;
+	margin-left: 80px;
+}
+.btn-danger{
+	float: left;
+	margin: 5px;
+	margin-left: 15px;
+}
+input,select{
+	border: 2px solid black;
+  border-radius: 6px;
+  text-align: center; 
+}
+.formerror{
+	font-size: 12px;
+	color: red;
+}
+
+
