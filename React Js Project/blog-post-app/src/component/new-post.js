@@ -4,11 +4,15 @@ import axios from 'axios';
 import Header from './header';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { isLoggedIn } from '../auth/login-auth';
 /**
  * Function to create a page to add new blog into the database
  */
 function NewPost() {
   const navigate = useNavigate();
+  let loginIn = isLoggedIn();
+  console.log(loginIn);
+  
   // Create a state variable for the form data
   const [blogData, setblogData] = useState({});
   // Create a state variable for the error data
@@ -17,9 +21,15 @@ function NewPost() {
 
   // Define an event handler for the form submission
   const handleSubmit = (event) => {
+    setIsSubmit(true);
     event.preventDefault();
     setFormErrors(validate(blogData));
-    setIsSubmit(true);
+    // setIsSubmit(true);
+    if (isSubmit) {
+      console.log(blogData);
+      submitBlog(blogData);
+      setblogData({});
+    }
 
   };
 
@@ -32,25 +42,18 @@ function NewPost() {
     }));
   };
 
-  useEffect(() => {
-    console.log(formErrors);
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(blogData);
-      submitBlog(blogData);
-      // Reset the form data to an empty object
-      setblogData({});
-    }
-  }, [formErrors]);
-
   const validate = (values) => {
     const errors = {};
     if (!values.title) {
+      setIsSubmit(false);
       errors.title = "Title is required!";
     }
     if (!values.category) {
+      setIsSubmit(false);
       errors.category = "Category is required!";
     }
     if (!values.content) {
+      setIsSubmit(false);
       errors.content = "content is required";
     }
     return errors;
@@ -65,6 +68,11 @@ function NewPost() {
     )
   }
 
+  useEffect(() => {
+    if(loginIn){
+      navigate("/signIn");
+    }
+}, []);
 
   return (
     <div className="container">

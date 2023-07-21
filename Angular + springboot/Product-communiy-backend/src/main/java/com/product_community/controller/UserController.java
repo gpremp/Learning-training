@@ -48,12 +48,16 @@ public class UserController {
 	 * @return returns the object of closure 
 	 */
 	@PostMapping("/user")
-	public User addUser(@RequestBody final User user) {
+	public String addUser(@RequestBody final User user) {
 		final User newUser = this.userServices.findUser(user.getEmail());
 		if(newUser==null) {
-			return this.userServices.saveUser(user);
+			this.userServices.saveUser(user);
+			System.out.println("skfljskldf");
+			return "success";
 		}
-		return null;
+		else {
+			return "failed";
+		}
 	}
 	
 	/**

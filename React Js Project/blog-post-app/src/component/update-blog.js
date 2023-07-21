@@ -4,12 +4,14 @@ import axios from 'axios';
 import Header from './header';
 import Swal from 'sweetalert2';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import { isLoggedIn } from '../auth/login-auth';
 
 /**
  * function to create update blog page
  */
 function UpdatePost() {
   const location = useLocation();
+  let loginIn = isLoggedIn();
   let { id } = useParams(); // Represent the id of blog
   const blog = location.state.blog;
   // Create a state variable for the form data
@@ -23,8 +25,11 @@ function UpdatePost() {
   // Define an event handler for the form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    setFormErrors(validate(blogData));
     setIsSubmit(true);
+    setFormErrors(validate(blogData));
+    if(isSubmit){
+      submitBlog(blogData);
+    }
   };
 
   // Define an event handler for the input change
@@ -35,22 +40,19 @@ function UpdatePost() {
       [name]: value,
     }));
   };
-
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      submitBlog(blogData);
-    }
-  }, [formErrors]);
   // Function to create form errors
   const validate = (values) => {
     const errors = {};
     if (!values.title) {
+      setIsSubmit(false);
       errors.title = "Title is required!";
     }
     if (!values.category) {
+      setIsSubmit(false);
       errors.category = "Category is required!";
     }
     if (!values.content) {
+      setIsSubmit(false);
       errors.content = "content is required";
     }
     return errors;
@@ -58,13 +60,19 @@ function UpdatePost() {
   // HTTP request to update the blog into database
   const submitBlog = (data) => {
     console.log(data);
-    axios.post("http://localhost:8080/blog", data).then(
+    axios.put("http://localhost:8080/blog", data).then(
       (response) => {
         Swal.fire("Success!", "Blog Updated Successfully!", "success");
         navigate(`/blog/${blog.id}`, { state: { blog: blogData } })
       }
     )
   }
+
+  useEffect(() => {
+    if(loginIn){
+      navigate("/signIn");
+    }
+}, []);
 
   return (
     <div className="container">

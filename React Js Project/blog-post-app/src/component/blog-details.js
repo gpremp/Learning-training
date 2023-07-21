@@ -5,12 +5,14 @@ import Header from './header';
 import img from '../static/image/like.png';
 import Swal from 'sweetalert2';
 import { useLocation, useParams, Link, useNavigate } from 'react-router-dom';
+import { isLoggedIn } from '../auth/login-auth';
 /**
  * Function to create a page to show blog details An option to like the blog and delete the blog
  * @returns Return BlogDetail function With HTML
  */
 function BlogDetails(props) {
     const location = useLocation();
+    let loginIn = isLoggedIn();
     let { id } = useParams();  // Id of blog
     const blog = location.state.blog; // Getting details of blog from state
     const navigate = useNavigate();
@@ -53,6 +55,12 @@ function BlogDetails(props) {
         )
         console.log(blog);
     }
+
+    useEffect(() => {
+        if(loginIn){
+            navigate("/signIn");
+          }
+    }, []);
     return (
         <div>
             <Header />

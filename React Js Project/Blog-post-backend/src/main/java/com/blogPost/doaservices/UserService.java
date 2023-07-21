@@ -1,31 +1,22 @@
-package com.product_community.doaservices;
+package com.blogPost.doaservices;
+
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.product_community.entities.User;
-import com.product_community.reprository.UserReprository;
+import com.blogPost.entities.User;
+import com.blogPost.reprository.UserReprository;
 
-/**
- * User service class to manage users into the database 
- * @author premgupta
- *
- */
 @Service
-public class UserServices {
+public class UserService {
 	
 	@Autowired
 	private UserReprository userReprository;
 	
-	/**
-	 * method to save new user into the database 
-	 * @param user represents the object of user 
-	 * @return returns the object of user 
-	 */
-	public User saveUser(final User user) {
-		return this.userReprository.save(user);
+	public User saveUser(User user) {
+		return userReprository.save(user);
 	}
 	
 	/**
@@ -36,7 +27,6 @@ public class UserServices {
 	public User findUser(final String email) {
 		final List<User> users = this.userReprository.findByEmail(email);
 		if(!users.isEmpty()) {
-			System.out.println(users.get(0).getEmail());
 			return users.get(0);
 		}
 		return null;
@@ -51,17 +41,10 @@ public class UserServices {
 	public User authenticateUser(final String email,final String password) {
 		final User user = findUser(email);
 		if(null!= user) {
-			if(user.getPassword().equals(password)) {
+			if(user.getPassword() != null &&user.getPassword().equals(password)) {
 				return user;
 			}
 		}
 		return null;
-	}
-	/**
-	 * Method to get the list of all users 
-	 * @return return the list of all users 
-	 */
-	public List<User> getUsers(){
-		return this.userReprository.findAll();
 	}
 }
